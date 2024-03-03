@@ -1,0 +1,59 @@
+.mat-sidenav {
+  background-color: #003b95;
+}
+
+  mat-toolbar {
+    background-color: white;
+  }
+
+  .toolbar-item{
+    margin-left: 24px;
+  }
+
+mat-sidenav {
+  overflow: hidden;
+}
+
+
+
+mat-list-item {
+  width: 64px;
+}
+
+
+mat-sidenav.expanded {
+  mat-icon {
+    font-size: 32px;
+  }
+}
+
+mat-nav-list {
+  a, button {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  mat-icon {
+    margin-right: 8px;
+    font-size: 24px;
+    color: white;
+  }
+}
+
+.mat-list-item-text{
+  color: white;
+  font-size: 16px;
+}
+.spacer{
+  flex: 1 1 auto;
+}
+
+.rounded-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-left: 20px;
+}
+
