@@ -1,0 +1,61 @@
+
+.title{
+  margin: 20px;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-left: 20px;
+}
+
+th {
+  background-color: #dadada;
+  color: black;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+td {
+  padding: 10px;
+  text-align: left;
+
+}
+tbody tr:hover {
+  background-color: #b6b4b4;
+}
+
+tbody tr{
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+.mat-icon-rotate-90 {
+  transform: rotate(90deg);
+  display: inline-block;
+}
+
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.tooltip{
+  flex-direction: row;
+}
+.header-text{
+  flex-direction: row;
+}
+.sorting-button{
+  flex-direction: row;
+}
+
+.header-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: normal;
+  width: 100%;
+}
+

@@ -1,0 +1,76 @@
+@if (isReady) {
+  <div class="card-container">
+    <mat-card class="mat-card-class">
+      <mat-form-field class="view-mode">
+        <mat-label>Provider Name</mat-label>
+        <input
+          matInput
+          [value]="provider.providerName"
+          disabled
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Provider Type</mat-label>
+        <input
+          matInput
+          [value]="providerTypes.get(provider.providerTypeid)"
+          disabled
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Expected Cost</mat-label>
+        <input matInput [value]="provider.expectedCost" disabled/>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Actual Cost</mat-label>
+        <input matInput [value]="provider.actualCost" disabled />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Expected Start time</mat-label>
+        <input
+          matInput
+          [value]="provider.expectedStartTime | date: 'dd/mm/yyyy'" disabled
+        />
+
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Actual Start time</mat-label>
+        <input
+          matInput
+          [value]="provider.actualStartTime | date: 'dd/mm/yyyy'" disabled
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Expected End time</mat-label>
+        <input
+          matInput
+          [value]="provider.expectedEndTime | date: 'dd/mm/yyyy'" disabled
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Actual End time</mat-label>
+        <input
+          matInput
+          [value]="provider.actualEndTime | date: 'dd/mm/yyyy'" disabled
+        />
+      </mat-form-field>
+    </mat-card>
+
+    <mat-card class="mat-card-class">
+      <mat-form-field>
+        <mat-label>Provided Product</mat-label>
+        <input matInput [value]="provider.providedProduct" disabled />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Expected Result</mat-label>
+        <input matInput [value]="provider.expectedResult" disabled />
+      </mat-form-field>
+      <mat-form-field style="width: 100%">
+        <mat-label>Notes</mat-label>
+        <textarea matInput [value]="provider.notes" disabled> </textarea>
+      </mat-form-field>
+    </mat-card>
+  </div>
+}

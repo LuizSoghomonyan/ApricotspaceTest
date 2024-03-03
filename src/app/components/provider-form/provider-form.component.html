@@ -1,0 +1,124 @@
+@if (formMode === FormMode.EDIT){
+  <form [formGroup]="formMetaInto.formGroup">
+    <div class="card-container">
+      <mat-card class="mat-card-class">
+        <mat-form-field>
+          <mat-label>Provider Name</mat-label>
+          <input matInput formControlName="providerName" />
+        </mat-form-field>
+
+        @if (providerTypeData$ | async; as providerTypes) {
+          <mat-form-field>
+            <mat-label>Provider Type</mat-label>
+            <mat-select
+              formControlName="providerTypeid"
+              [(value)]="provider.providerTypeid"
+            >
+              @for (providerTypeId of providerTypes.keys(); track providerTypeId) {
+                <mat-option [value]="providerTypeId"
+                >{{ providerTypes.get(providerTypeId)}}
+                </mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        }
+        <mat-form-field>
+          <mat-label>Expected Cost</mat-label>
+          <input matInput formControlName="expectedCost" />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Actual Cost</mat-label>
+          <input matInput formControlName="actualCost" />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Expected Start time</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker1"
+            formControlName="expectedStartTime"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker1"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Actual Start time</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker2"
+            formControlName="actualStartTime"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker2"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Expected End time</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker3"
+            formControlName="expectedEndTime"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker3"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker3></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Actual End time</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker4"
+            formControlName="actualEndTime"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker4"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker4></mat-datepicker>
+        </mat-form-field>
+      </mat-card>
+
+      <mat-card class="mat-card-class">
+        <mat-form-field>
+          <mat-label>Provided Product</mat-label>
+          <input matInput formControlName="providedProduct" />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Expected Result</mat-label>
+          <input matInput formControlName="expectedResult" />
+        </mat-form-field>
+        <mat-form-field style="width: 100%">
+          <mat-label>Notes</mat-label>
+          <textarea matInput formControlName="notes"> </textarea>
+        </mat-form-field>
+      </mat-card>
+    </div>
+
+    <div class="buttons-container">
+      <button mat-raised-button color="basic" (click)="onCancel()" class="button">
+        Cancel
+      </button>
+      <button mat-raised-button color="primary" type="submit" (click)="onSave()" class="button">
+        Save
+      </button>
+    </div>
+
+
+  </form>
+
+} @else {
+  <div class="view-form">
+    <app-provider-form-view [provider]="provider"></app-provider-form-view>
+    <button mat-icon-button (click)="formMode=FormMode.EDIT" >
+      <mat-icon>edit</mat-icon>
+    </button>
+  </div>
+
+}

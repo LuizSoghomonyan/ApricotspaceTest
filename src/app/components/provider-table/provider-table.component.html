@@ -1,0 +1,78 @@
+<div class="header-container">
+  <div class="title">
+    <h2>Providers and Costs</h2>
+  </div>
+  <button mat-icon-button (click)="createNewProvider()">
+    <mat-icon>add_circle_outline</mat-icon>
+  </button>
+</div>
+
+<div class="table">
+  <table>
+    <thead>
+      <tr>
+        @for (header of headerData; track header) {
+          <th>
+            <div class="header">
+              @if (header.displayName !== "") {
+                <button mat-icon-button class="sorting-button">
+                  <mat-icon class="mat-icon-rotate-90">compare_arrows</mat-icon>
+                </button>
+                <p class="header-text">{{ header.displayName }}</p>
+                <button
+                  mat-icon-button
+                  matTooltip="{{ header.tooltipMessage }}"
+                  class="tooltip"
+                >
+                  <mat-icon style="color: #aaa8a8">info</mat-icon>
+                </button>
+              }
+            </div>
+          </th>
+        } @empty {
+          No Data
+        }
+      </tr>
+
+      <tr></tr>
+    </thead>
+    <tbody>
+      @if (tableData.length !== 0) {
+        @for (provider of tableData; track provider.id) {
+          <tr (click)="openFormById(provider)">
+            <td><mat-icon> vertical_align_center</mat-icon></td>
+            <td>{{ provider.providerName }}</td>
+            <td>{{ providerTypes.get(provider.providerTypeid) }}</td>
+            <td>{{ provider.expectedCost }}</td>
+            <td>{{ provider.actualCost }}</td>
+            <td>{{ provider.expectedStartTime | date: "dd/mm/yyyy" }}</td>
+            <td>{{ provider.actualStartTime | date: "dd/mm/yyyy" }}</td>
+            <td>{{ provider.expectedEndTime | date: "dd/mm/yyyy" }}</td>
+            <td>{{ provider.actualEndTime | date: "dd/mm/yyyy" }}</td>
+          </tr>
+          @if (isFormOpen(provider.id)) {
+            <tr class="form-row">
+              <td colspan="9">
+                <div>
+                  <app-provider-form
+                    [formMetaInto]="getFormMetaInfoById(provider.id)"
+                    [provider]="provider"
+                    [formMode]="formMode"
+                    (cancel)="cancel($event)"
+                    (save)="save($event)"
+                  ></app-provider-form>
+                </div>
+              </td>
+            </tr>
+          }
+        }
+      } @else {
+        <tr class="form-row">
+          <td colspan="9">
+            <div>No Data</div>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
