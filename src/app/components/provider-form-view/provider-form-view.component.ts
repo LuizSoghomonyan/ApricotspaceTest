@@ -1,4 +1,4 @@
-import { Component, Injectable, Input } from '@angular/core';
+import { Component, Injectable, Input, OnInit } from '@angular/core';
 import { ProviderTableDataInterface } from '../../models/provider-table-data.interface';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { MatButton } from '@angular/material/button';
@@ -43,13 +43,15 @@ import { map } from 'rxjs/operators';
   templateUrl: './provider-form-view.component.html',
   styleUrl: './provider-form-view.component.css',
 })
-export class ProviderFormViewComponent {
+export class ProviderFormViewComponent implements OnInit {
   @Input() provider!: ProviderTableDataInterface;
   public providerTypes!: Map<number, string>;
   public isReady = false;
   protected readonly FormMode = FormMode;
 
-  constructor(private providerService: ProviderService) {
+  constructor(private providerService: ProviderService) {}
+
+  ngOnInit(): void {
     this.providerService
       .getProviderTypes()
       .pipe(map((data: Map<number, string>) => (this.providerTypes = data)))
